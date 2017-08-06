@@ -138,14 +138,6 @@ namespace HaloOnlineTagTool.Commands.Tags
             /*if (srcTag.IsClass("rm  "))
                 return destInfo.Cache.Tags[0x101F];*/
 
-            // Check if the tag is in the map, and just return the translated tag if so
-            var destIndex = tagMap.Translate(srcInfo.Version, srcTag.Index, destInfo.Version);
-            if (destIndex >= 0)
-            {
-                Console.WriteLine("- Using already-known index {0:X4}", destIndex);
-                return destInfo.Cache.Tags[destIndex];
-            }
-
             // Deserialize the tag from the source cache
             var structureType = TagStructureTypes.FindByGroupTag(srcTag.Group.Tag);
             var srcContext = new TagSerializationContext(srcStream, srcInfo.Cache, srcInfo.StringIds, srcTag);
